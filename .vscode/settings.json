@@ -12,5 +12,6 @@
     "xml": {
       "attr_quotes": "single"
     }
-  }
+  },
+  "prettier.trailingComma": "none"
 }
