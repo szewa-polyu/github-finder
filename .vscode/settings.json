@@ -13,5 +13,6 @@
       "attr_quotes": "single"
     }
   },
-  "prettier.trailingComma": "none"
+  "prettier.trailingComma": "none",
+  "prettier.arrowParens": "avoid"
 }
