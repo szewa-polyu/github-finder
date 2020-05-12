@@ -16,6 +16,9 @@ class App extends Component {
     loading: false
   };
 
+  searchRef = null;
+  setSearchRef = element => this.searchRef = element;
+
   // Search GitHub users
   searchUsers = async text => {
     this.setState({
@@ -36,6 +39,7 @@ class App extends Component {
       users: [],
       loading: false
     });
+    this.searchRef.clearText();
   };
 
   render() {
@@ -45,6 +49,7 @@ class App extends Component {
         <Navbar />
         <div className='container'>
           <Search
+            ref={this.setSearchRef}
             searchUsers={this.searchUsers}
             clearUsers={this.clearUsers}
             showClear={users.length > 0}
