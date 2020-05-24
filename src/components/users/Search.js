@@ -1,26 +1,37 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
+//import PropTypes from 'prop-types';
+import GitHubContext from '../../context/gitHub/gitHubContext';
+import AlertContext from '../../context/alert/alertContext';
 
-const Search = ({ searchUsers, clearUsers, showClear, setAlert }) => {
-  const [text, setText] = useState('');
+const Search = _ => {
+  const {
+    users,
+    searchUsersText,
+    searchUsers,
+    clearUsers,
+    setSearchUsersText,
+    clearSearchUsersText
+  } = useContext(GitHubContext);
+  const { setAlert } = useContext(AlertContext);
 
   const onSubmit = e => {
     e.preventDefault();
 
-    if (text === '') {
+    if (searchUsersText === '') {
       setAlert('Please enter something', 'light');
       return;
     }
 
-    searchUsers(text);
+    searchUsers();
   };
 
   const onChange = e => {
-    setText(e.target.value);
+    setSearchUsersText(e.target.value);
   };
 
-  const clearText = _ => {
-    setText('');
+  const onClearButtonClick = _ => {
+    clearUsers();
+    clearSearchUsersText();
   };
 
   return (
@@ -30,7 +41,7 @@ const Search = ({ searchUsers, clearUsers, showClear, setAlert }) => {
           type='text'
           name='text'
           placeholder='Search Users...'
-          value={text}
+          value={searchUsersText}
           onChange={onChange}
         />
         <input
@@ -39,8 +50,11 @@ const Search = ({ searchUsers, clearUsers, showClear, setAlert }) => {
           className='btn btn-dark btn-block'
         />
       </form>
-      {showClear && (
-        <button className='btn btn-light btn-block' onClick={clearUsers}>
+      {users.length > 0 && (
+        <button
+          className='btn btn-light btn-block'
+          onClick={onClearButtonClick}
+        >
           Clear
         </button>
       )}
@@ -48,11 +62,11 @@ const Search = ({ searchUsers, clearUsers, showClear, setAlert }) => {
   );
 };
 
-Search.propTypes = {
-  searchUsers: PropTypes.func.isRequired,
-  clearUsers: PropTypes.func.isRequired,
-  showClear: PropTypes.bool.isRequired,
-  setAlert: PropTypes.func.isRequired
-};
+// Search.propTypes = {
+//   searchUsers: PropTypes.func.isRequired,
+//   clearUsers: PropTypes.func.isRequired,
+//   showClear: PropTypes.bool.isRequired,
+//   setAlert: PropTypes.func.isRequired
+// };
 
 export default Search;

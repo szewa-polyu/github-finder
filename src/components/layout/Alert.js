@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import AlertContext from '../../context/alert/alertContext';
 
-const Alert = ({ alert }) => {
+const Alert = _ => {
+  const { alert } = useContext(AlertContext);
   return (
     alert !== null && (
       <div className={`alert alert-${alert.type}`}>
