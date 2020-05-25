@@ -1,6 +1,6 @@
-# Github Finder
+# GitHub Finder
 
-> React app to search Github profiles. This app uses the Context API along with the useContext and useReducer hooks for state management and is part of the ["Modern React Front To Back" Udemy course](https://www.udemy.com/course/modern-react-front-to-back/) by [Brad Traversy](https://www.udemy.com/course/modern-react-front-to-back/#instructor-1).
+> React app to search GitHub profiles. This app uses the Context API along with the useContext and useReducer hooks for state management and is part of the ["Modern React Front To Back" Udemy course](https://www.udemy.com/course/modern-react-front-to-back/) by [Brad Traversy](https://www.udemy.com/course/modern-react-front-to-back/#instructor-1).
 
 > [Brad Traversy's repository](https://github.com/bradtraversy/github-finder)
 
